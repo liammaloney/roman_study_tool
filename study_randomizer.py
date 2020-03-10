@@ -1,36 +1,46 @@
-from roman_provinces import *
+from data import *
 import random
 
-if __name__ == "__main__":
+def game(quizzable_data):
     high_score = 0
     try :
         streak = 0
         done = []
+        num_entries = len(quizzable_data)
         while (True):
-            randnum = random.randrange(0,49)
-            province_name = list(PROVINCES.keys())[randnum]
+            randnum = random.randrange(0,num_entries)
+            question = list(quizzable_data.keys())[randnum]
 
-            while province_name in done:
-                randnum = random.randrange(0,49)
-                province_name = list(PROVINCES.keys())[randnum]
+            while question in done:
+                randnum = random.randrange(0,num_entries)
+                question = list(quizzable_data.keys())[randnum]
 
-            print(province_name)
+            print(question)
 
-            answer = input("Input Answer: ")
+            answer = input("Input Answer: ").upper()
 
-            if (answer == PROVINCES[province_name]):
+            if (answer == quizzable_data[question].upper()):
                 streak = streak + 1
-                done.append(province_name)
+                done.append(question)
                 if (streak > high_score):
                     high_score = streak
-                print("Correct.\n")
+                print("Correct.\n\n")
             else:
                 streak = 0
-                print("Incorrect, Correct answer is {}\n".format(PROVINCES[province_name]))
-            print("Current Streak: {}".format(streak))
+                print("Incorrect, Correct answer is {}\n\n".format(quizzable_data[question]))
+            print("Current Streak: {}\n".format(streak))
 
-            if (len(done)>=len(PROVINCES)):
+            if (len(done)>=num_entries):
                 print('YOU WIN')
                 exit
     except KeyboardInterrupt:
         print('Exited, your high score was {}'.format(high_score))
+
+if __name__ == "__main__":
+    data_type = input("What would you like to be quizzed on? Cities, Dates, or Provinces?: ")
+    if(data_type.lower() == 'provinces'):
+        game(PROVINCES)
+    elif(data_type.lower() == 'dates'):
+        game(DATES)
+    elif(data_type.lower() == 'cities'):
+        game(CITIES)
