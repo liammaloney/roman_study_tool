@@ -96,7 +96,7 @@ DATES = {
     'Spain made into two provinces': '197',
     'Philip V defeated at Cynoscephalae (Second Macedonian War)': '197',
     'Antiochus III of Syria defeated at Magnesia': '190',
-    'Third Macedonian War ends at Pydna': '167',
+    'Third Macedonian War ends at Pydna': '168',
     'Illyricum made a province': '167',
     'RANGE Third Punic War; destruction of Carthage; Africa made a province': '149-146',
     'Fourth Macedonian War ends': '148',
